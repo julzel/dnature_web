@@ -1,12 +1,14 @@
 'use client';
+import { useDisclosure } from '@chakra-ui/react';
 import Button from '@/components/Button';
-import { Button as ChakraButton } from '@chakra-ui/react';
+import Modal from '@/components/Modal';
 
 interface InternalProps {
   // Add any props you need for the Internal component
 }
 
 const Internal: React.FC<InternalProps> = ({}) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   // Add your component logic here
 
   return (
@@ -43,11 +45,17 @@ const Internal: React.FC<InternalProps> = ({}) => {
           variant='ghost'
           onClick={() => console.log('Clicked!')}
         />
-         <Button
+        <Button
           label='Link'
           variant='link'
           onClick={() => console.log('Clicked!')}
         />
+      </div>
+      <div>
+        <Button onClick={onOpen}>Open Modal</Button>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <p>Modal Content</p>
+        </Modal>
       </div>
     </div>
   );

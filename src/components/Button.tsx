@@ -3,10 +3,11 @@ import { Button as ChakraButton, useColorModeValue } from '@chakra-ui/react';
 
 type ButtonProps = {
   onClick: () => void;
-  label: string;
+  label?: string;
   color?: 'primary' | 'secondary';
-  disabled?: boolean;
   variant?: 'solid' | 'outline' | 'ghost' | 'link';
+  disabled?: boolean;
+  children?: React.ReactNode;
 };
 
 const colorMap = {
@@ -14,7 +15,7 @@ const colorMap = {
   secondary: 'orange'
 };
 
-const Button: React.FC<ButtonProps> = ({ onClick, label, color = 'primary', variant, disabled }) => {
+const Button: React.FC<ButtonProps> = ({ onClick, label, color = 'primary', variant, disabled, children }) => {
   const bgColor = useColorModeValue(`${colorMap[color]}.500`, `${colorMap[color]}.500`);
   const hoverBgColor = useColorModeValue(`${colorMap[color]}.600`, `${colorMap[color]}.300`);
   const textColor = useColorModeValue('white', 'gray.800');
@@ -35,7 +36,7 @@ const Button: React.FC<ButtonProps> = ({ onClick, label, color = 'primary', vari
         onClick={onClick}
         isDisabled={disabled}
       >
-        {label}
+        {label ? label : children}
       </ChakraButton>
     );
   }
@@ -54,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({ onClick, label, color = 'primary', vari
       onClick={onClick}
       isDisabled={disabled}
     >
-      {label}
+      {label ? label : children}
     </ChakraButton>
   );
 };
