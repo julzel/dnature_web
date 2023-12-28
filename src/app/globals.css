@@ -1,15 +1,15 @@
-:root {
+/* :root {
   --light-theme-text: #29434e;
   --light-theme-bg: #07bbc7;
   --dark-theme-text: #07bbc7;
   --dark-theme-bg: #29434e;
-}
+} */
 
 /* body {
   background-color: transparent !important;
 } */
 
-.light {
+/* .light {
   color: var(--light-theme-text);
   background-color: var(--light-theme-bg);
 }
@@ -17,4 +17,4 @@
 .dark {
   color: var(--dark-theme-text);
   background-color: var(--dark-theme-bg);
-}
+} */
