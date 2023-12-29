@@ -2,6 +2,7 @@
 import { Box, useDisclosure } from '@chakra-ui/react';
 import Button from '@/components/Button';
 import Modal from '@/components/Modal';
+import Form from './Form';
 
 interface InternalProps {
   // Add any props you need for the Internal component
@@ -56,6 +57,9 @@ const Internal: React.FC<InternalProps> = ({}) => {
         <Modal isOpen={isOpen} onClose={onClose}>
           <p>Modal Content</p>
         </Modal>
+      </Box>
+      <Box mt={4}>
+        <Form />
       </Box>
     </Box>
   );
