@@ -5,7 +5,7 @@ import Modal from '@/components/Modal';
 import Form from './Form';
 
 interface InternalProps {
-  // Add any props you need for the Internal component
+  // Add any props needed for the Internal component
 }
 
 const Internal: React.FC<InternalProps> = ({}) => {
@@ -18,39 +18,12 @@ const Internal: React.FC<InternalProps> = ({}) => {
       <h1>Internal Page</h1>
       <p>This is the internal page content.</p>
       <Box mt={4}>
-        <Button label='Primary' onClick={() => console.log('Clicked!')} />
-        <Button
-          label='Disabled'
-          onClick={() => console.log('Clicked!')}
-          disabled
-        />
-        <Button
-          label='Secondary'
-          color='secondary'
-          onClick={() => console.log('Clicked!')}
-        />
-        <Button
-          label='Outline'
-          variant='outline'
-          onClick={() => console.log('Clicked!')}
-        />
-        <Button
-          label='Outline'
-          color='secondary'
-          variant='outline'
-          onClick={() => console.log('Clicked!')}
-        />
-        <Button
-          label='Ghost'
-          color='secondary'
-          variant='ghost'
-          onClick={() => console.log('Clicked!')}
-        />
-        <Button
-          label='Link'
-          variant='link'
-          onClick={() => console.log('Clicked!')}
-        />
+        <Button variant='solid' onClick={() => console.log('Clicked!')}>solid</Button>
+        <Button variant='secondary' onClick={() => console.log('Clicked!')}>secondary</Button>
+        <Button variant='outline'>outline</Button>
+        <Button variant='secondary-ol' onClick={() => console.log('Clicked!')}>secondary-ol</Button>
+        <Button variant='link'>link</Button>
+        <Button variant='ghost'>ghost</Button>
       </Box>
       <Box mt={4}>
         <Button onClick={onOpen}>Open Modal</Button>

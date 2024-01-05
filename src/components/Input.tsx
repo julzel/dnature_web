@@ -3,6 +3,7 @@ import {
   FormLabel,
   Input,
   FormErrorMessage,
+  useColorModeValue,
 } from '@chakra-ui/react';
 
 type CustomInputProps = {
@@ -22,11 +23,13 @@ const CustomInput = ({
   register,
   errors,
 }: CustomInputProps) => {
+    const focusBorderColor = useColorModeValue('cyan.500', 'cyan.300');
 
   return (
-    <FormControl isInvalid={!!errors[name]}>
+    <FormControl mb={[4, 8]} isInvalid={!!errors[name]}>
       {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
       <Input
+        focusBorderColor={focusBorderColor}
         id={name}
         placeholder={placeholder}
         {...register(name, validationRules)}
