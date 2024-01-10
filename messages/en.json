@@ -2,8 +2,17 @@
     "Index": {
         "title": "Test Title"
     },
+    "DarkModeSwitcher": {
+        "label": "Dark Mode"
+    },
     "LocaleSwitcher": {
-        "label": "Change language",
+        "label": "Language",
         "locale": "{locale, select, es {Spanish} en {English} other {Unknown}}"
+    },
+    "Header": {
+        "blog": "Blog",
+        "home": "Home",
+        "faq": "FAQ",
+        "store": "Store"
     }
 }

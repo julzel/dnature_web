@@ -26,11 +26,12 @@ const colors = {
     800: '#046c77',
     900: '#023e59', // darkest shade, adjust as needed
   },
+  brand: '#29434e',
 };
 
 // Theme configuration for color modes
 const config: ThemeConfig = {
-  initialColorMode: 'dark',
+  initialColorMode: 'light',
   useSystemColorMode: false,
 };
 
@@ -68,7 +69,7 @@ const theme = extendTheme({
         }),
         'secondary-ol': () => ({
           bg: 'transparent',
-          border : '1px solid',
+          border: '1px solid',
           borderColor: 'orange.500',
           color: 'orange.500',
           _hover: {

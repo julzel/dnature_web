@@ -1,26 +1,31 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Flex, Divider } from '@chakra-ui/react';
 import Logo from '@/components/Logo';
-// import LocaleSwitcher from '@/components/LocaleSwitcher';
-// import DarkModeSwitch from '@/components/DarkModeSwitch';
+import HeaderMenu from '@/components/HeaderMenu';
+import HeaderSubmenu from '@/components/HeaderSubmenu';
 
 const Header = () => {
   return (
     <header>
-      <Box
+      <Flex
         bg='cyan.900'
         color='white'
         px={[4, 8]}
         py={2}
         pb={1}
-        display='flex'
         justifyContent='space-between'
         alignItems='center'
         w='100%'
+        height='60px'
       >
-        <Logo variant='transparent' />
-        {/* <LocaleSwitcher />
-        <DarkModeSwitch /> */}
-      </Box>
+        <Logo variant='color' />
+        <Flex alignItems='center'>
+          <HeaderSubmenu />
+          <Box height={6} mx={4}>
+            <Divider orientation='vertical' />
+          </Box>
+          <HeaderMenu />
+        </Flex>
+      </Flex>
     </header>
   );
 };

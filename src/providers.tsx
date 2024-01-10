@@ -1,6 +1,7 @@
 'use client';
 import { ReactNode, FC } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
+import { CartProvider } from '@/contexts/CartContext';
 import theme from '@/theme';
 
 type ProvidersProps = {
@@ -10,7 +11,9 @@ type ProvidersProps = {
 const Providers: FC<ProvidersProps> = ({ children }) => {
   return (
     <>
-      <ChakraProvider theme={theme}>{children}</ChakraProvider>
+      <ChakraProvider theme={theme}>
+        <CartProvider>{children}</CartProvider>
+      </ChakraProvider>
     </>
   );
 };
