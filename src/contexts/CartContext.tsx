@@ -24,7 +24,7 @@ export const CartContext = createContext<CartContextProps>({
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [totalItems, setTotalItems] = useState<number>(1);
+  const [totalItems, setTotalItems] = useState<number>(0);
   
   const updateTotalItems = () => {
     const total = cart.reduce((count, item) => count + item.quantity, 0);

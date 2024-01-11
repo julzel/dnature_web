@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import Button from '@/components/Button';
-import Input from '@/components/Input';
-import Checkbox from '@/components/Checkbox';
+import Input from '@/components/form/Input';
+import Checkbox from '@/components/form/Checkbox';
 
 type FormInput = {
   label: string;
@@ -27,14 +27,6 @@ const Form: React.FC<FormProps> = ({ inputs, onSubmit }) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       {inputs.map((input, index) =>
         input.type === 'checkbox' ? (
-          //   <div key={index}>
-          //     <label htmlFor={input.name}>{input.label}</label>
-          //     <input
-          //       type='checkbox'
-          //       id={input.name}
-          //       {...register(input.name)}
-          //     />
-          //   </div>
           <Checkbox
             key={index}
             name={input.name}
