@@ -1,6 +1,8 @@
 import { NextIntlClientProvider, useMessages } from 'next-intl';
+import { Box, Flex } from '@chakra-ui/react';
 import Providers from '@/providers';
 import Header from '@/components/header/Header';
+import Footer from '@/components/footer/Footer';
 import '../globals.css';
 
 interface LocaleLayoutProps {
@@ -18,14 +20,15 @@ export default function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body>
+      <Flex as='body' flexDirection='column' minH='100vh'>
         <NextIntlClientProvider messages={messages}>
           <Providers>
             <Header />
-            <main>{children}</main>
+            <Box as='main' flex={1}>{children}</Box>
+            <Footer />
           </Providers>
         </NextIntlClientProvider>
-      </body>
+      </Flex>
     </html>
   );
 }
