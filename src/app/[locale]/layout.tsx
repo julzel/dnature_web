@@ -1,6 +1,6 @@
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import Providers from '@/providers';
-import Header from '@/components/Header';
+import Header from '@/components/header/Header';
 import '../globals.css';
 
 interface LocaleLayoutProps {

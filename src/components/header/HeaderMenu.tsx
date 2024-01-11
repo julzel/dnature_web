@@ -2,7 +2,7 @@
 import { useMediaQuery } from '@chakra-ui/react';
 import DropdownMenu from '@/components/DropdownMenu';
 import MenuIcon from '@/components/icons/MenuIcon';
-import HeaderNav from '@/components/HeaderNav';
+import HeaderNav from '@/components/header/HeaderNav';
 import HeaderNavigationItems from '@/hooks/useHeaderTranslation';
 import { INavLink } from '@/types';
 

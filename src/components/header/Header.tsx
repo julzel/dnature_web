@@ -1,7 +1,7 @@
 import { Box, Flex, Divider } from '@chakra-ui/react';
 import Logo from '@/components/Logo';
-import HeaderMenu from '@/components/HeaderMenu';
-import HeaderSubmenu from '@/components/HeaderSubmenu';
+import HeaderMenu from '@/components/header/HeaderMenu';
+import HeaderSubmenu from '@/components/header/HeaderSubmenu';
 
 const Header = () => {
   return (

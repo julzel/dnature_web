@@ -3,6 +3,7 @@ import { Box, useDisclosure } from '@chakra-ui/react';
 import Button from '@/components/Button';
 import Modal from '@/components/Modal';
 import Form from './Form';
+import Slider from '@/components/Slider';
 
 interface InternalProps {
   // Add any props needed for the Internal component
@@ -33,6 +34,9 @@ const Internal: React.FC<InternalProps> = ({}) => {
       </Box>
       <Box mt={4}>
         <Form />
+      </Box>
+      <Box mt={4}>
+        <Slider />
       </Box>
     </Box>
   );
