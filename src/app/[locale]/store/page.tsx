@@ -1,9 +1,5 @@
 import { getAllProducts } from '@/apis/contentful/products';
 
-// type StoreProps = {
-//   products: ProductCollection;
-// };
-
 export async function getProducts() {
   const products = await getAllProducts();
   return products;
