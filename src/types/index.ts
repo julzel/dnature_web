@@ -8,8 +8,4 @@ export type IMenuItem = {
   onClick?: () => void;
 }
 
-export type IMenuChild = {
-  customElement?: React.ReactNode;
-}
-
-export type IDropdownItem = INavLink | IMenuItem | IMenuChild;
+export type IDropdownItem = INavLink | IMenuItem ;

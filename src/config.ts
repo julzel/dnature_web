@@ -4,7 +4,7 @@ export const locales = ['es', 'en'] as const;
 
 export const pathnames = {
   '/': '/',
-  '/tienda': {
+  '/store': {
     es: '/tienda',
     en: '/store',
   },
