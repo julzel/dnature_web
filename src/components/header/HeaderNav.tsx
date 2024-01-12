@@ -5,25 +5,22 @@ import { INavLink } from '@/types';
 
 type HeaderNavProps = {
   navLinks: INavLink[];
-  hideOnLargeScreens?: boolean;
 };
 
-const HeaderNav: React.FC<HeaderNavProps> = ({
-  navLinks,
-  hideOnLargeScreens,
-}) => {
-
+const HeaderNav: React.FC<HeaderNavProps> = ({ navLinks }) => {
   return (
     <Flex as='nav' align='center'>
       {navLinks.map((link, index) => (
         <Link
+          fontSize='sm'
+          textTransform='uppercase'
           key={index}
           href={link.path}
           passHref
           as={NextLink}
           px={2}
           py={1}
-          rounded={'md'}
+          rounded='md'
           _hover={{ textDecoration: 'none', bg: 'cyan.700' }}
         >
           {link.label}

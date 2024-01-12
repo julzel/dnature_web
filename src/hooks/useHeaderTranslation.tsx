@@ -6,9 +6,10 @@ const HeaderNavigationItems = () => {
 
     const navLinks: INavLink[] = [
         { path: '/', label: t('home') },
-        { path: '/int', label: t('store') },
+        { path: '/store', label: t('store') },
         { path: '/blog', label: t('blog') },
         { path: '/faq', label: t('faq') },
+        { path: '/int', label: 'int' },
       ];
 
       return navLinks;

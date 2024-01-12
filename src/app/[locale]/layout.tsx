@@ -20,7 +20,7 @@ export default function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <Flex as='body' flexDirection='column' minH='100vh'>
+      <Flex as='body' flexDirection='column' minH='100dvh'>
         <NextIntlClientProvider messages={messages}>
           <Providers>
             <Header />
