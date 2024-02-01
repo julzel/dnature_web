@@ -1,18 +1,18 @@
 {
-    "Index": {
-        "title": "Título de prueba"
-    },
-    "DarkModeSwitcher": {
-        "label": "Modo oscuro"
-    },
-    "LocaleSwitcher": {
-        "label": "Idioma",
-        "locale": "{locale, select, es {Español} en {Inglés} other {desconocido}}"
-    },
-    "Header": {
-        "blog": "Blog",
-        "home": "Inicio",
-        "faq": "Preguntas frecuentes",
-        "store": "Tienda"
-    }
+  "Index": {
+    "title": "Título de prueba"
+  },
+  "DarkModeSwitcher": {
+    "label": "Modo oscuro"
+  },
+  "LocaleSwitcher": {
+    "label": "Idioma",
+    "locale": "{locale, select, es {Español} en {Inglés} other {desconocido}}"
+  },
+  "Header": {
+    "blog": "Blog",
+    "home": "Inicio",
+    "faq": "Sabías que",
+    "store": "Tienda"
+  }
 }
