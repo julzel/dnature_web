@@ -12,11 +12,11 @@ const Footer = () => {
       align='center'
       justify='center'
       w='full'
-      p={[2, 4]}
+      p={[4]}
     >
       <Box>
         <Flex justify='center' mb={2}>
-          <Logo variant={logoVariant} />
+          <Logo variant={logoVariant} size='sm' />
         </Flex>
         <Text textAlign='center' fontSize='sm'>
           © {date} - Todos los derecho reservados.

@@ -1,5 +1,5 @@
 {
-  "name": "next_chakra_dark_i18n",
+  "name": "dnature_web_next",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -22,7 +22,8 @@
     "react-awesome-slider": "^4.1.0",
     "react-dom": "^18",
     "react-hook-form": "^7.49.2",
-    "react-icons": "^4.12.0"
+    "react-icons": "^4.12.0",
+    "sass": "^1.74.1"
   },
   "devDependencies": {
     "@types/node": "^20",
