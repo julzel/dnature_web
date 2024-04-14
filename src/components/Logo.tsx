@@ -12,14 +12,23 @@ const variants = {
 };
 
 const sizes = {
-    sm: 35,
-    md: 50,
-    lg: 100,
+    sm: {
+        height: 35,
+        width: 35,
+    },
+    md: {
+        height: 39,
+        width: 77,
+    },
+    lg: {
+        height: 100,
+        width: 100,
+    },
 };
 
 const Logo: React.FC<LogoProps> = ({ variant = 'color', size = 'md' }) => {
     return (
-        <Image src={variants[variant]} alt="Logo" width={sizes[size]} height={sizes[size]} />
+        <Image src={variants[variant]} alt="Logo" width={sizes[size].width} height={sizes[size].height} />
     );
 }
  

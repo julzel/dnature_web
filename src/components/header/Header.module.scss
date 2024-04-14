@@ -3,13 +3,27 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 20px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: var(--header-height);
   z-index: 1;
+}
+
+.headerLogo {
+  position: relative;
+  width: 50px;
+  height: 39px;
+
+  img {
+    position: absolute;
+
+    // @media screen and (max-width: 768px){
+    //   top
+    // }
+  }
 }
 
 .menuButton {

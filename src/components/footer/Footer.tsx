@@ -12,16 +12,16 @@ const Footer = () => {
       align='center'
       justify='center'
       w='full'
-      p={[4]}
+      p={[8]}
     >
       <Box>
         <Flex justify='center' mb={2}>
           <Logo variant={logoVariant} size='sm' />
         </Flex>
-        <Text textAlign='center' fontSize='sm'>
+        <Text textAlign='center' fontSize='xs'>
           © {date} - Todos los derecho reservados.
         </Text>
-        <Text textAlign='center' fontSize='sm'>
+        <Text textAlign='center' fontSize='xs'>
           Tibás, Costa Rica.
         </Text>
       </Box>

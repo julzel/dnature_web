@@ -1,0 +1,35 @@
+.slider {
+  display: flex;
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide {
+  background-position: center center; /* Center the image */
+  background-size: cover; /* Scale the image to cover the whole element */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  flex-shrink: 0;
+  width: 100vw;
+  height: 100%;
+  transition: all 0.75s ease-in-out;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  button {
+    margin: 0 20px;
+  }
+}

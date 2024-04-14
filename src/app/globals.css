@@ -1,3 +1,7 @@
 :root {
-  --header-height: 60px;
+  /*colors*/
+  --brand-orange: #ff6f00;
+  --brand-blue: #07bbc7;
+  /*sizes*/
+  --header-height: 80px;
 }

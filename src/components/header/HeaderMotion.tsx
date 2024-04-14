@@ -1,7 +1,6 @@
 'use client';
 import { ReactNode } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import styles from './Header.module.scss';
 
 type HeaderMotionProps = {
   children: ReactNode;

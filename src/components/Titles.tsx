@@ -1,16 +1,8 @@
 import { ReactNode } from 'react';
 import { Heading, HeadingProps } from '@chakra-ui/react';
 
-enum TitleType {
-  Banner = 'banner',
-  Page = 'page',
-  Section = 'section',
-  Subtitle = 'subtitle',
-  Subtitle2 = 'subtitle-2',
-}
-
 interface TitleProps extends HeadingProps {
-  type: TitleType;
+  type: 'banner' | 'page' | 'section' | 'subtitle' | 'subtitle-2';
   children: ReactNode;
 }
 
@@ -19,23 +11,23 @@ const Title: React.FC<TitleProps> = ({ type, children, ...props }) => {
   let as: React.ElementType;
 
   switch (type) {
-    case TitleType.Banner:
+    case 'banner':
       size = '4xl';
       as = 'h2';
       break;
-    case TitleType.Page:
+    case 'page':
       size = '3xl';
       as = 'h1';
       break;
-    case TitleType.Section:
+    case 'section':
       size = '2xl';
       as = 'h2';
       break;
-    case TitleType.Subtitle:
+    case 'subtitle':
       size = 'xl';
       as = 'h3';
       break;
-    case TitleType.Subtitle2:
+    case 'subtitle-2':
       size = 'l';
       as = 'h4';
       break;

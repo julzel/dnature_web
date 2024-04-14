@@ -3,6 +3,8 @@ import { Box, Flex } from '@chakra-ui/react';
 import Providers from '@/providers';
 import Header from '@/components/header/Header';
 import Footer from '@/components/footer/Footer';
+import "@fontsource/montserrat/400.css"; // Weight 400.
+import "@fontsource/montserrat/700.css"; // Weight 700.
 import '../globals.css';
 
 interface LocaleLayoutProps {
