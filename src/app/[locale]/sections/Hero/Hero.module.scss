@@ -2,7 +2,7 @@
 .heroSlide {
   width: 100vw;
   color: white;
-  padding: calc(var(--header-height) + 24px) 32px;
+  padding: calc(var(--header-height) + 64px) 32px;
   height: 100%;
 
   &.slide1 {
@@ -10,12 +10,18 @@
     flex-flow: column;
     justify-content: space-between;
     align-items: center;
+
+    .heroButton {
+      text-transform: uppercase;
+      border-width: 2px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
   }
 }
 
 .heroTitle,
 .heroSubtitle {
-  font-family: 'Montserrat', sans-serif !important;
+  font-family: 'Oswald', sans-serif !important;
   text-transform: uppercase;
   line-height: 1!important;
 }

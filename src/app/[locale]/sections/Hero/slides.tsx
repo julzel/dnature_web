@@ -1,22 +1,5 @@
-import Title from '@/components/Titles';
-import styles from './Hero.module.scss';
-import Button from '@/components/Button';
+import Slide1 from "./Slide1";
 
-const Slide1 = () => (
-  <div className={`${styles.heroSlide} ${styles.slide1}`}>
-    <div>
-      <Title type='page' className={styles.heroTitle}>
-        Nutrición premium
-      </Title>
-      <Title type='subtitle' className={styles.heroSubtitle}>
-        <span>100% natural</span>
-      </Title>
-    </div>
-    <div className={styles.heroCTA}>
-      <Button variant='secondary'>Descubre más</Button>
-    </div>
-  </div>
-);
 
 export const slides = [
   {

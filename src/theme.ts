@@ -44,6 +44,10 @@ const theme = extendTheme({
   components: {
     Button: {
       // Here you can add additional variants or override existing ones
+      baseStyle: ({ colorMode }: { colorMode: 'light' | 'dark' }) => ({
+        fontFamily: 'Montserrat, sans-serif', // Set Montserrat globally for all buttons
+        color: colorMode === 'dark' ? 'black' : 'white',
+      }),
       variants: {
         solid: ({ colorMode }: { colorMode: 'light' | 'dark' }) => ({
           bg: 'cyan.500',
@@ -74,6 +78,15 @@ const theme = extendTheme({
           color: 'orange.500',
           _hover: {
             bg: 'orange.100',
+          },
+        }),
+        'secondary-ol-white': () => ({
+          bg: 'transparent',
+          border: '1px solid',
+          borderColor: 'white.500',
+          color: 'white.500',
+          _hover: {
+            bg: 'white.100',
           },
         }),
         link: () => ({

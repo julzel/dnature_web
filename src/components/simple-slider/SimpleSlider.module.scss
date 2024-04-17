@@ -1,6 +1,6 @@
 .slider {
   display: flex;
-  height: 100dvh;
+  height: 100vh;
   overflow: hidden;
   position: relative;
 }
@@ -16,7 +16,7 @@
   flex-shrink: 0;
   width: 100vw;
   height: 100%;
-  transition: all 0.75s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 
 .controls {

@@ -5,3 +5,7 @@
   /*sizes*/
   --header-height: 80px;
 }
+
+html {
+  scroll-behavior: smooth;
+}

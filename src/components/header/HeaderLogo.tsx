@@ -12,13 +12,13 @@ const HeaderLogo = (props: Props) => {
   // Interpolate scroll progress to color values
   const opacityIn = useTransform(
     scrollYProgress,
-    [0.5, 1], // Adjust these values based on when you want the color to change
+    [0.20, 0.25], // Adjust these values based on when you want the color to change
     [0, 1]
   );
 
   const opacityOut = useTransform(
     scrollYProgress,
-    [0.5, 1], // Adjust these values based on when you want the color to change
+    [0.20, 0.25], // Adjust these values based on when you want the color to change
     [1, 0]
   );
 

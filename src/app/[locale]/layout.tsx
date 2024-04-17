@@ -5,6 +5,8 @@ import Header from '@/components/header/Header';
 import Footer from '@/components/footer/Footer';
 import "@fontsource/montserrat/400.css"; // Weight 400.
 import "@fontsource/montserrat/700.css"; // Weight 700.
+import "@fontsource/oswald/400.css";  // Weight 400
+import "@fontsource/oswald/700.css";  // Weight 700
 import '../globals.css';
 
 interface LocaleLayoutProps {
