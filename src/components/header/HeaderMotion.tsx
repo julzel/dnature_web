@@ -15,7 +15,7 @@ const HeaderMotion = ({ children, className }: HeaderMotionProps) => {
   const backgroundColor = useTransform(
     scrollYProgress,
     [0.20, 0.25], // Adjust these values based on when you want the color to change
-    ['rgba(0, 0, 0, 0)', '#023e59'] // From transparent to deep blue
+    ['rgba(0, 0, 0, 0)', '#07bbc7'] // From transparent to deep blue
   );
 
   return (

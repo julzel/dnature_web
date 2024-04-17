@@ -1,4 +1,4 @@
-import Title from '@/components/Titles';
+import ShopBox from './ShopBox';
 import styles from './Shop.module.scss';
 type Props = {};
 
@@ -18,7 +18,7 @@ const Shop = (props: Props) => {
     },
     {
       name: 'Proteínas',
-      image: '/images/product-types/proteins.jpeg',
+      image: '/images/product-types/proteins.png',
     },
     {
       name: 'Órganos',
@@ -29,16 +29,7 @@ const Shop = (props: Props) => {
   return (
     <div id='products' className={styles.shopGrid}>
       {shops.map((shop, index) => (
-        <div
-          key={index}
-          className={`${styles.shopItem}`}
-          style={{ backgroundImage: `url(${shop.image})` }}
-        >
-          <div className={styles.overlay} />
-          <div className={styles.content} >
-            <Title className={styles.contentTitle} type='section'>{shop.name}</Title>
-          </div>
-        </div>
+        <ShopBox key={index} shop={shop} index={index} />
       ))}
     </div>
   );

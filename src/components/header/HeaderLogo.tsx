@@ -6,29 +6,19 @@ import styles from './Header.module.scss';
 type Props = {};
 
 const HeaderLogo = (props: Props) => {
-  // Hook to track scroll progress (0 at the top, 1 at the bottom)
   const { scrollYProgress } = useScroll();
 
   // Interpolate scroll progress to color values
   const opacityIn = useTransform(
     scrollYProgress,
-    [0.20, 0.25], // Adjust these values based on when you want the color to change
-    [0, 1]
-  );
-
-  const opacityOut = useTransform(
-    scrollYProgress,
-    [0.20, 0.25], // Adjust these values based on when you want the color to change
-    [1, 0]
+    [0.20, 0.25],
+    [0.25, 1]
   );
 
   return (
     <div className={styles.headerLogo}>
       <motion.div style={{ opacity: opacityIn }}>
-        <Logo variant='color' />
-      </motion.div>
-      <motion.div style={{ opacity: opacityOut }}>
-        <Logo variant='transparent' />
+        <Logo variant='white' />
       </motion.div>
     </div>
   );
