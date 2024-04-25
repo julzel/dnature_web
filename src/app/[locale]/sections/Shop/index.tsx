@@ -9,7 +9,7 @@ const Shop = (props: Props) => {
       image: '/images/product-types/snacks.jpg',
     },
     {
-      name: 'DNA Complete',
+      name: 'Recetas completas',
       image: '/images/product-types/meals.jpg',
     },
     {

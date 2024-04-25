@@ -1,27 +1,25 @@
 'use client';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Logo from '@/components/Logo';
-import styles from './Header.module.scss';
 
-type Props = {};
-
-const HeaderLogo = (props: Props) => {
+const AnimatedLogo = () => {
   const { scrollYProgress } = useScroll();
 
   // Interpolate scroll progress to color values
-  const opacityIn = useTransform(
-    scrollYProgress,
-    [0.20, 0.25],
-    [0.25, 1]
-  );
+  const opacityOut = useTransform(scrollYProgress, [0.2, 0.25], [1, 0]);
+
+  const opacityIn = useTransform(scrollYProgress, [0.2, 0.25], [0, 1]);
 
   return (
-    <div className={styles.headerLogo}>
+    <>
       <motion.div style={{ opacity: opacityIn }}>
+        <Logo variant='color' />
+      </motion.div>
+      <motion.div style={{ opacity: opacityOut }}>
         <Logo variant='white' />
       </motion.div>
-    </div>
+    </>
   );
 };
 
-export default HeaderLogo;
+export default AnimatedLogo;

@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
 import Title from '@/components/Titles';
 import styles from './Shop.module.scss';
@@ -40,27 +41,32 @@ const contentVariants: Variants = {
 
 const ShopBox = (props: Props) => {
   const { shop, index } = props;
+
   return (
-    <motion.div
-      initial='offscreen'
-      whileInView='onscreen'
-      viewport={{ once: true, amount: 0.25 }}
-      key={index}
-      className={styles.shopItemContainer}
-    >
+    <Link href={`/store?category=${shop.name}`} passHref>
       <motion.div
-        variants={itemVariants}
-        className={`${styles.shopItem}`}
-        style={{ backgroundImage: `url(${shop.image})` }}
+        initial='offscreen'
+        whileInView='onscreen'
+        viewport={{ once: true, amount: 0.25 }}
+        key={index}
+        className={styles.shopItemContainer}
+        role='button'
+        tabIndex={0}
       >
-        <div className={styles.overlay} />
-        <motion.div variants={contentVariants} className={styles.content}>
-          <Title className={styles.contentTitle} type='section'>
-            {shop.name}
-          </Title>
+        <motion.div
+          variants={itemVariants}
+          className={`${styles.shopItem}`}
+          style={{ backgroundImage: `url(${shop.image})` }}
+        >
+          <div className={styles.overlay} />
+          <motion.div variants={contentVariants} className={styles.content}>
+            <Title className={styles.contentTitle} type='section'>
+              {shop.name}
+            </Title>
+          </motion.div>
         </motion.div>
       </motion.div>
-    </motion.div>
+    </Link>
   );
 };
 

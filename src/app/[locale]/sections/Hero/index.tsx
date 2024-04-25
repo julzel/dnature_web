@@ -9,7 +9,8 @@ const Hero = (props: Props) => {
       showNavigation={false}
       slidesData={slides}
       autoplay={true}
-      autoplayInterval={3000}
+      autoplayInterval={7000}
+      fullScreen={true}
     />
   );
 };

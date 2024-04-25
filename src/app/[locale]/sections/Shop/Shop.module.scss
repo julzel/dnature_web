@@ -49,15 +49,15 @@
   }
 }
 
-// /* Medium screens: 2, 2, 1 layout */
-// @media (min-width: 600px) {
-//   .shopGrid {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-//   .shopItem.wide {
-//     grid-column: span 2;
-//   }
-// }
+/* Medium screens: 2, 2, 1 layout */
+@media (min-width: 600px) {
+  .shopGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  // .shopItem.wide {
+  //   grid-column: span 2;
+  // }
+}
 
 // /* Large screens: 3 and 2 layout */
 // @media (min-width: 900px) {

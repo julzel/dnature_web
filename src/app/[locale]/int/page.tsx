@@ -11,7 +11,6 @@ interface InternalProps {
 
 const Internal: React.FC<InternalProps> = ({}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  // Add your component logic here
 
   return (
     <Box p={[4, 8, 16]}>

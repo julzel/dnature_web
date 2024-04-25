@@ -1,9 +1,10 @@
 .header {
-  color: white;
+  background-color: var(--brand-white);
+  color: var(--dark-text);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 16px;
   position: fixed;
   top: 0;
   left: 0;
@@ -19,13 +20,17 @@
 
   img {
     position: absolute;
-
-    // @media screen and (max-width: 768px){
-    //   top
-    // }
   }
 }
 
 .menuButton {
-  font-size: 24px;
+  font-size: 28px;
+  position: relative;
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100%, -50%);
+  }
 }
