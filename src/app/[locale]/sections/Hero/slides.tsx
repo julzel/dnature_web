@@ -7,12 +7,12 @@ export const slides = [
     bgImage: '/images/home/slide-1.jpg',
     jsx: <Slide1 />,
   },
-  // {
-  //   title: 'Slide 2',
-  //   description: 'Productos',
-  //   bgColor: '#26cfde',
-  //   // bgImage: 'https://via.placeholder.com/800x400',
-  // },
+  {
+    title: 'Slide 2',
+    description: 'Productos',
+    bgColor: '#26cfde',
+    // bgImage: 'https://via.placeholder.com/800x400',
+  },
   // {
   //   title: 'Slide 3',
   //   description: 'Nutrición',

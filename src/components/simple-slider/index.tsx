@@ -10,11 +10,12 @@ export type Slide = {
   jsx?: ReactNode;
 };
 
-type Props = {
+type SimpleSliderProps = {
   showNavigation?: boolean;
   autoplay?: boolean;
   autoplayInterval?: number;
   slidesData: Slide[];
+  fullScreen?: boolean;
 };
 
 function SimpleSlider({
@@ -22,15 +23,37 @@ function SimpleSlider({
   showNavigation = true,
   autoplay = false,
   autoplayInterval = 3000,
-}: Props) {
+  fullScreen = false,
+}: SimpleSliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [startX, setStartX] = useState(0);
+  const [moveX, setMoveX] = useState(0);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((currentSlide + 1) % slidesData.length);
   }, [currentSlide, slidesData]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentSlide((currentSlide - 1 + slidesData.length) % slidesData.length);
+  }, [currentSlide, slidesData]);
+
+  const handleTouchStart = (e) => {
+    const touch = e.touches[0];
+    setStartX(touch.clientX);
+    setMoveX(0); // Reset move distance on new touch
+  };
+
+  const handleTouchMove = (e) => {
+    const touch = e.touches[0];
+    setMoveX(startX - touch.clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (moveX > 50) { // Right swipe
+      nextSlide();
+    } else if (moveX < -50) { // Left swipe
+      prevSlide();
+    }
   };
 
   useEffect(() => {
@@ -44,22 +67,25 @@ function SimpleSlider({
   }, [currentSlide, autoplay, autoplayInterval, nextSlide]);
 
   return (
-    <div className={styles.slider}>
+    <div
+      className={styles.slider}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       {slidesData.map((slide, index) => (
         <div
           key={index}
           className={styles.slide}
           style={{
-            backgroundColor: slide.bgColor || 'transparent', // Default to 'transparent' if no bgColor provided
+            backgroundColor: slide.bgColor || 'transparent',
             backgroundImage: slide.bgImage ? `url(${slide.bgImage})` : 'none',
             transform: `translateX(${-100 * currentSlide}%)`,
+            height: fullScreen ? '100vh' : 'auto',
           }}
         >
           {slide.title && <h1>{slide.title}</h1>}
           {slide.description && <p>{slide.description}</p>}
-          {/* {slide.image && (
-            <img src={slide.image} alt={slide.title || 'Slide'} />
-          )} */}
           {slide.jsx}
         </div>
       ))}

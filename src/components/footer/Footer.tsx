@@ -7,7 +7,7 @@ const Footer = () => {
   const logoVariant = useColorModeValue('black', 'white');
   return (
     <Flex
-      bg={'orange.600'}
+      bg={'orange.500'}
       as='footer'
       align='center'
       justify='center'

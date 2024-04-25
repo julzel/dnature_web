@@ -1,7 +1,7 @@
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { Box, Flex } from '@chakra-ui/react';
 import Providers from '@/providers';
-import Header from '@/components/header/Header';
+import Header from '@/components/header';
 import Footer from '@/components/footer/Footer';
 import "@fontsource/montserrat/400.css"; // Weight 400.
 import "@fontsource/montserrat/700.css"; // Weight 700.

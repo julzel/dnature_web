@@ -5,9 +5,10 @@
 //   return <h1>{t('title')}</h1>;
 // }
 
-import ScrollTopButton from './sections/ScrollTopButton';
+import ScrollTopButton from './ScrollTopButton';
 import Hero from './sections/Hero';
 import Shop from './sections/Shop';
+import Greeting from './sections/Greeting';
 
 type Props = {};
 
@@ -17,6 +18,7 @@ const Home = (props: Props) => {
       <div>
         <Hero />
         <Shop />
+        <Greeting />
       </div>
       <ScrollTopButton />
     </>

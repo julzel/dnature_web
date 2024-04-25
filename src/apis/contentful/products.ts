@@ -26,7 +26,7 @@ const productsQuery = `
 }
 `;
 
-export const getAllProducts = async (): Promise<Record<string, TProduct[]>> => {
+export const getAllProducts = async (): Promise<TProduct[]> => {
   try {
     const response = await fetchFromContentful(productsQuery, 'products');
     if (response.error) {
@@ -34,18 +34,10 @@ export const getAllProducts = async (): Promise<Record<string, TProduct[]>> => {
     }
 
     // Ensure that we have an array here
-    const products: TProduct[] = response.data?.productCollection?.items || [];
+    return response.data?.productCollection?.items || [];
 
-    return products.reduce((acc: Record<string, TProduct[]>, product: TProduct) => {
-      const category = product.category;
-      if (!acc[category]) {
-        acc[category] = [];
-      }
-      acc[category].push(product);
-      return acc;
-    }, {});
   } catch (error) {
     console.error('Error fetching all products:', error);
-    return {};
+    return [];
   }
 };
