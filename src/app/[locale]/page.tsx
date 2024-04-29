@@ -5,7 +5,7 @@
 //   return <h1>{t('title')}</h1>;
 // }
 
-import ScrollTopButton from './ScrollTopButton';
+import ScrollTopButton from '@/components/scroll-to-top-button';
 import Hero from './sections/Hero';
 import Shop from './sections/Shop';
 import Greeting from './sections/Greeting';

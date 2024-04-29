@@ -6,8 +6,22 @@ import Checkbox from '@/components/form/Checkbox';
 type FormInput = {
   label: string;
   name: string;
-  placeholder: string;
-  validationRules: any;
+  placeholder?: string; // Mark placeholder as optional
+  validationRules?: {
+    required?: string;
+    minLength?: {
+      value: number;
+      message: string;
+    };
+    maxLength?: {
+      value: number;
+      message: string;
+    };
+    pattern?: {
+      value: any;
+      message: string;
+    };
+  };
   type?: string;
 };
 
@@ -39,6 +53,7 @@ const Form: React.FC<FormProps> = ({ inputs, onSubmit }) => {
             key={index}
             label={input.label}
             name={input.name}
+            type={input.type || 'text'}
             placeholder={input.placeholder}
             validationRules={input.validationRules}
             register={register}

@@ -5,6 +5,10 @@ import { useSearchParams } from 'next/navigation';
 import { useStore } from '@/hooks/useStore';
 import { TProduct } from '@/types/products';
 
+import styles from './page.module.scss';
+import SearchAndFilter from './sections/SearchAndFilter';
+import ProductsList from './sections/ProductsList';
+
 const Store = () => {
   const searchParams = useSearchParams();
   const category = searchParams.get('category');
@@ -25,25 +29,14 @@ const Store = () => {
     return products;
   }, [products, category]);
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
-    <div>
-      <h1>Store</h1>
-      {loading ? (
-        <p>Loading...</p>
-      ) : Object.keys(filteredProducts).length === 0 ? (
-        <p>No products available.</p>
-      ) : (
-        Object.entries(filteredProducts).map(([category, items]) => (
-          <div key={category}>
-            <h2>{category}</h2>
-            <ul>
-              {items.map((product) => (
-                <li key={product.sys.id}>{product.productName}</li>
-              ))}
-            </ul>
-          </div>
-        ))
-      )}
+    <div className={styles.store}>
+      <SearchAndFilter />
+      <ProductsList list={filteredProducts} />
     </div>
   );
 };
