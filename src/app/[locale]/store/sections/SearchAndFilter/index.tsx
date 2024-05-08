@@ -1,17 +1,23 @@
-import React from 'react'
-import Search from './Search'
-import Filter from './Filter'
+import Search from './Search';
+import Filter from './Filter';
 import styles from './SearchAndFilter.module.scss';
 
-type Props = {}
+type SerchAndFilterProps = {
+  onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  searchValue: string;
+  onFilterChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+};
 
-const SearchAndFilter = (props: Props) => {
+const SearchAndFilter = ({
+  onSearchChange,
+  searchValue,
+}: SerchAndFilterProps) => {
   return (
     <div className={styles.searchAndFilter}>
-      <Search />
+      <Search onSearchChange={onSearchChange} searchValue={searchValue} />
       <Filter />
     </div>
-  )
-}
+  );
+};
 
-export default SearchAndFilter
+export default SearchAndFilter;

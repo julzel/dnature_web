@@ -1,9 +1,18 @@
 .searchAndFilter {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
+  // align-items: center;
 }
 
 .search {
-  width: 70%;
+  flex: 1;
+  margin-right: 24px;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
 }

@@ -1,11 +1,10 @@
-import React from 'react'
+import React from 'react';
+import styles from './SearchAndFilter.module.scss';
 
-type Props = {}
+type Props = {};
 
 const Filter = (props: Props) => {
-  return (
-    <div>Filter</div>
-  )
-}
+  return <div className={styles.filter}>Filter</div>;
+};
 
-export default Filter
+export default Filter;
