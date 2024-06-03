@@ -1,6 +1,6 @@
 import { Box, Flex } from '@chakra-ui/react';
-import Search from '../../components/Search';
-import Filter from '../../components/Filter';
+import Search from '@/components/search';
+import FilterButton from '@/components/filter-button';
 import styles from './SearchAndFilter.module.scss';
 
 type SerchAndFilterProps = {
@@ -15,9 +15,13 @@ const SearchAndFilter = ({
 }: SerchAndFilterProps) => {
   return (
     <Box backgroundColor='cyan.50' className={styles.searchAndFilterContainer}>
-      <Flex justifyContent='space-between' className={styles.searchAndFilter} p={4}>
+      <Flex
+        justifyContent='space-between'
+        className={styles.searchAndFilter}
+        p={4}
+      >
         <Search onSearchChange={onSearchChange} searchValue={searchValue} />
-        <Filter />
+        <FilterButton onClick={() => alert('Filtrar y ordenar')} />
       </Flex>
     </Box>
   );
