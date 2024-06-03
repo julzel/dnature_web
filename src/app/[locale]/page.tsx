@@ -6,9 +6,9 @@
 // }
 
 import ScrollTopButton from '@/components/scroll-to-top-button';
-import Hero from './sections/Hero';
-import Shop from './sections/Shop';
-import Greeting from './sections/Greeting';
+import Hero from './components/Hero';
+import Shop from './components/Shop';
+import Greeting from './components/Greeting';
 
 type Props = {};
 

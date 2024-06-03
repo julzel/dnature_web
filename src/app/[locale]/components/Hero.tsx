@@ -8,7 +8,7 @@ const Hero = (props: Props) => {
     <SimpleSlider
       showNavigation={false}
       slidesData={slides}
-      autoplay={true}
+      autoplay={false}
       autoplayInterval={7000}
       fullScreen={true}
     />
