@@ -1,18 +1,13 @@
-.searchAndFilter {
-  display: flex;
-  justify-content: space-between;
+.searchAndFilterContainer {
+  background-color: var(--brand-white);
+  position: fixed;
   align-items: stretch;
-  // align-items: center;
-}
+  width: 100vw;
+  left: 0;
+  top: var(--header-height);
 
-.search {
-  flex: 1;
-  margin-right: 24px;
-}
-
-.filter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20%;
+  .searchAndFilter {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }

@@ -27,6 +27,7 @@ const colors = {
     900: '#023e59', // darkest shade, adjust as needed
   },
   brand: '#29434e',
+  borderColor: '#e9e9e9',
 };
 
 // Theme configuration for color modes
@@ -40,6 +41,14 @@ const theme = extendTheme({
   ...config,
   colors: {
     ...colors, // Spreading your brand colors directly into the theme's colors
+  },
+  styles: {
+    global: ({ colorMode }: { colorMode: 'light' | 'dark' }) => ({
+      body: {
+        bg: colorMode === 'dark' ? 'gray.900' : '#fdfdfd',
+        color: colorMode === 'dark' ? 'white' : 'black',
+      },
+    }),
   },
   components: {
     Button: {
@@ -134,14 +143,6 @@ const theme = extendTheme({
         variant: 'outline',
       },
     },
-  },
-  styles: {
-    global: ({ colorMode }: { colorMode: 'light' | 'dark' }) => ({
-      body: {
-        bg: colorMode === 'dark' ? 'black' : 'gray.100',
-        color: colorMode === 'dark' ? 'white' : 'black',
-      },
-    }),
   },
 });
 

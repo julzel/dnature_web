@@ -1,0 +1,16 @@
+
+.productName {
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 14px!important;
+}
+
+.productPrice {
+  font-size: 16px!important;
+}
+
+.productName,
+.productPrice {
+  font-family: 'Oswald', sans-serif!important;
+  letter-spacing: 1px;
+}

@@ -1,5 +1,6 @@
-import Search from './Search';
-import Filter from './Filter';
+import { Box, Flex } from '@chakra-ui/react';
+import Search from '../../components/Search';
+import Filter from '../../components/Filter';
 import styles from './SearchAndFilter.module.scss';
 
 type SerchAndFilterProps = {
@@ -13,10 +14,12 @@ const SearchAndFilter = ({
   searchValue,
 }: SerchAndFilterProps) => {
   return (
-    <div className={styles.searchAndFilter}>
-      <Search onSearchChange={onSearchChange} searchValue={searchValue} />
-      <Filter />
-    </div>
+    <Box backgroundColor='cyan.50' className={styles.searchAndFilterContainer}>
+      <Flex justifyContent='space-between' className={styles.searchAndFilter} p={4}>
+        <Search onSearchChange={onSearchChange} searchValue={searchValue} />
+        <Filter />
+      </Flex>
+    </Box>
   );
 };
 

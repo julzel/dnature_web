@@ -1,9 +1,10 @@
 'use client';
 import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { Flex, Box } from '@chakra-ui/react';
 
 import { useStore } from '@/hooks/useStore';
-import { TProduct } from '@/types/products';
+import { TProductCollection } from '@/types/products';
 
 import styles from './page.module.scss';
 import SearchAndFilter from './sections/SearchAndFilter';
@@ -14,8 +15,10 @@ const Store = () => {
   const searchParams = useSearchParams();
   const category = searchParams.get('category');
   const { loading, sortAllProductsByCategory } = useStore();
-  const [products, setProducts] = useState<Record<string, TProduct[]>>({});
-  const [searchResults, setSearchResults] = useState<TProduct[]>([]);
+  const [products, setProducts] = useState<Record<string, TProductCollection>>(
+    {}
+  );
+  const [searchResults, setSearchResults] = useState<TProductCollection>([]);
   const [displayResults, setDisplayResults] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>('');
 
@@ -43,7 +46,6 @@ const Store = () => {
         .filter((product) =>
           product.productName.toLowerCase().includes(value.toLowerCase())
         );
-      console.log(results);
       setSearchResults(results);
       setDisplayResults(true);
     } else {
@@ -66,14 +68,16 @@ const Store = () => {
         onSearchChange={handleOnSearch}
         searchValue={searchValue}
       />
-      {displayResults ? (
-        <SearchResults
-          results={searchResults}
-          onClose={endSearch}
-        />
-      ) : (
-        <ProductsList list={filteredProducts} />
-      )}
+      <Flex>
+        <Box flex={1}>
+          {displayResults ? (
+            <SearchResults results={searchResults} onClose={endSearch} />
+          ) : (
+            <ProductsList list={filteredProducts} />
+          )}
+        </Box>
+        <Box width={[0, '20%']} />
+      </Flex>
     </div>
   );
 };

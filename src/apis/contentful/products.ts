@@ -1,5 +1,5 @@
 import { fetchFromContentful } from './util';
-import { TProduct } from '@/types/products';
+import { TProductCollection } from '@/types/products';
 
 const productsQuery = `
 {
@@ -26,7 +26,7 @@ const productsQuery = `
 }
 `;
 
-export const getAllProducts = async (): Promise<TProduct[]> => {
+export const getAllProducts = async (): Promise<TProductCollection> => {
   try {
     const response = await fetchFromContentful(productsQuery, 'products');
     if (response.error) {

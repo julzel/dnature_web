@@ -1,8 +1,8 @@
-import { TProduct } from '@/types/products';
+import { TProductCollection } from '@/types/products';
 import Button from '@/components/Button';
 
 type SearchResultsProps = {
-  results: TProduct[];
+  results: TProductCollection;
   onClose: () => void;
 };
 

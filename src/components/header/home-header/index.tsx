@@ -26,6 +26,7 @@ const HomeHeader = () => {
       className={headerStyles.header}
       style={{
         backgroundColor,
+        borderBottom: 'none',
       }}
     >
       <Link href='/' className={headerStyles.headerLogo}>

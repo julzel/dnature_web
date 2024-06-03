@@ -1,14 +1,21 @@
-import { ReactNode } from 'react';
+import React, { ReactNode, ElementType } from 'react';
 import { Heading, HeadingProps } from '@chakra-ui/react';
 
 interface TitleProps extends HeadingProps {
-  type: 'banner' | 'page' | 'section' | 'subtitle' | 'subtitle-2';
+  type:
+    | 'banner'
+    | 'page'
+    | 'section'
+    | 'subtitle'
+    | 'subtitle-2'
+    | 'paragraph'
+    | 'caption';
   children: ReactNode;
 }
 
-const Title: React.FC<TitleProps> = ({ type, children, ...props }) => {
+const Title = ({ type, children, ...props }: TitleProps) => {
   let size: HeadingProps['size'];
-  let as: React.ElementType;
+  let as: ElementType;
 
   switch (type) {
     case 'banner':
@@ -28,12 +35,19 @@ const Title: React.FC<TitleProps> = ({ type, children, ...props }) => {
       as = 'h3';
       break;
     case 'subtitle-2':
-      size = 'l';
+      size = 'lg'; // Assuming 'l' was a typo
       as = 'h4';
       break;
-    default:
+    case 'paragraph':
       size = 'md';
       as = 'p';
+      break;
+    case 'caption':
+      size = 'sm';
+      as = 'p';
+      break;
+    default:
+      throw new Error(`Unhandled type: ${type}`);
   }
 
   return (

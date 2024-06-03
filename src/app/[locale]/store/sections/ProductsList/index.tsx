@@ -1,27 +1,28 @@
-import { TProduct } from '@/types/products';
+import { Box, Text } from '@chakra-ui/react';
+import { TProductCollection } from '@/types/products';
+// import Product from '../../components/Product';
+import ProductsGrid from '../../components/ProductsGrid';
 
 type ProductsListProps = {
-  list: Record<string, TProduct[]>;
+  list: Record<string, TProductCollection>;
 };
 
 const ProductsList = ({ list }: ProductsListProps) => {
   return (
-    <div>
+    <Box py={[4, 8]}>
       {Object.keys(list).length === 0 ? (
-        <p>No products available.</p>
+        <Text>No hay productos disponibles por el momento.</Text>
       ) : (
         Object.entries(list).map(([category, items]) => (
-          <div key={category}>
-            <h2>{category}</h2>
-            <ul>
-              {items.map((product) => (
-                <li key={product.sys.id}>{product.productName}</li>
-              ))}
-            </ul>
-          </div>
+          <Box key={category}>
+            <Text fontSize='lg' fontWeight='bold'>
+              {category}
+            </Text>
+            <ProductsGrid items={items} />
+          </Box>
         ))
       )}
-    </div>
+    </Box>
   );
 };
 
