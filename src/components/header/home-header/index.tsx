@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { CiMenuBurger } from 'react-icons/ci';
+import { PiPawPrint } from 'react-icons/pi';
 import Logo from '@/components/Logo';
 import headerStyles from '../Header.module.scss';
 
@@ -42,13 +42,13 @@ const HomeHeader = () => {
           className={headerStyles.icon}
           style={{ opacity: opacityIn, color: 'var(--dark-text)' }}
         >
-          <CiMenuBurger />
+          <PiPawPrint />
         </motion.span>
         <motion.span
           className={headerStyles.icon}
           style={{ opacity: opacityOut, color: 'var(--light-text)' }}
         >
-          <CiMenuBurger />
+          <PiPawPrint />
         </motion.span>
       </button>
     </motion.header>

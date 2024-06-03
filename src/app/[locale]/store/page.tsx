@@ -7,9 +7,9 @@ import { useStore } from '@/hooks/useStore';
 import { TProductCollection } from '@/types/products';
 
 import styles from './page.module.scss';
-import SearchAndFilter from './sections/SearchAndFilter';
-import ProductsList from './sections/ProductsList';
-import SearchResults from './sections/SearchResults';
+import SearchAndFilter from './components/SearchAndFilter';
+import ProductsList from './components/ProductsList';
+import SearchResults from './components/SeachResults';
 
 const Store = () => {
   const searchParams = useSearchParams();

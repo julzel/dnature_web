@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CiMenuBurger } from 'react-icons/ci';
+import { PiPawPrint } from 'react-icons/pi';
 import Logo from '@/components/Logo';
 import headerStyles from '../Header.module.scss';
 
@@ -10,7 +10,7 @@ const MainHeader = () => {
         <Logo variant='color' />
       </Link>
       <button className={headerStyles.menuButton}>
-        <CiMenuBurger />
+        <PiPawPrint />
       </button>
     </header>
   );

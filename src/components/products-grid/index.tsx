@@ -1,6 +1,6 @@
 import { Grid, Box } from '@chakra-ui/react';
 import { TProductCollection } from '@/types/products';
-import Product from './Product'; // Assuming you have this component
+import ProductPreview from '../product-preview'; // Assuming you have this component
 
 type GridProps = {
   items: TProductCollection;
@@ -19,7 +19,7 @@ const ProductsGrid = ({ items }: GridProps) => {
     >
       {items.map((product) => (
         <Box key={product.sys.id}>
-          <Product product={product} />
+          <ProductPreview product={product} />
         </Box>
       ))}
     </Grid>

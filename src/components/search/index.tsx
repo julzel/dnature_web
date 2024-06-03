@@ -17,6 +17,7 @@ const Search = ({
     <div className={styles.search}>
       <InputGroup>
         <Input
+          backgroundColor='white'
           name='search'
           type='text'
           placeholder={placeholder || 'Buscar'}
