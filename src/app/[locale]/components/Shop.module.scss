@@ -8,6 +8,7 @@
   overflow-x: hidden;
 
   .shopItemContainer {
+    border-radius: var(--border-radius);
     overflow: hidden;
   }
 
@@ -41,7 +42,7 @@
     .contentTitle {
       display: inline-block;
       color: white;
-      font-family: 'Montserrat', sans-serif!important;
+      font-family: 'Montserrat', sans-serif !important;
       text-align: center;
       padding-bottom: 2px;
       border-bottom: 4px solid var(--brand-orange);

@@ -9,6 +9,7 @@ import {
 type CustomInputProps = {
   name: string;
   label?: string;
+  type?: string;
   placeholder: string;
   validationRules: any;
   register?: any;
@@ -18,6 +19,7 @@ type CustomInputProps = {
 const CustomInput = ({
   name,
   label,
+  type,
   placeholder,
   validationRules,
   register,
@@ -29,6 +31,7 @@ const CustomInput = ({
     <FormControl mb={[4, 8]} isInvalid={!!errors[name]}>
       {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
       <Input
+        type={type}
         focusBorderColor={focusBorderColor}
         id={name}
         placeholder={placeholder}

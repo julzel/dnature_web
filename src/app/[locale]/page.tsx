@@ -5,10 +5,10 @@
 //   return <h1>{t('title')}</h1>;
 // }
 
-import ScrollTopButton from './ScrollTopButton';
-import Hero from './sections/Hero';
-import Shop from './sections/Shop';
-import Greeting from './sections/Greeting';
+import ScrollTopButton from '@/components/scroll-to-top-button';
+import Hero from './components/Hero';
+import Shop from './components/Shop';
+import Greeting from './components/Greeting';
 
 type Props = {};
 

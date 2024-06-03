@@ -17,8 +17,4 @@ export type TProduct = {
   };
 };
 
-export type TProductCollection = {
-  productCollection: {
-    items: TProduct[];
-  };
-};
+export type TProductCollection = TProduct[];

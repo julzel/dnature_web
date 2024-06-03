@@ -1,0 +1,13 @@
+.searchAndFilterContainer {
+  background-color: var(--brand-white);
+  position: fixed;
+  align-items: stretch;
+  width: 100vw;
+  left: 0;
+  top: var(--header-height);
+
+  .searchAndFilter {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
