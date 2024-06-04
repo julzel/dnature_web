@@ -1,9 +1,12 @@
 'use client';
 import { useState, useEffect, useMemo } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { Flex, Box } from '@chakra-ui/react';
+import { useSearchParams, useRouter } from 'next/navigation';
 
-import { useStore } from '@/hooks/useStore';
+import {
+  getProducts,
+  getCategories,
+  getProductsSortedByCategory,
+} from './store';
 import { TProductCollection } from '@/types/products';
 
 import styles from './page.module.scss';
@@ -11,41 +14,53 @@ import SearchAndFilter from './components/SearchAndFilter';
 import ProductsList from './components/ProductsList';
 import SearchResults from './components/SeachResults';
 
+const searchInProducts = (products: TProductCollection, value: string) => {
+  return Object.values(products)
+    .flat()
+    .filter((product) =>
+      product.productName.toLowerCase().includes(value.toLowerCase())
+    );
+};
+
+const ALL_CATEGORIES = 'Todos';
+
 const Store = () => {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const category = searchParams.get('category');
-  const { loading, sortAllProductsByCategory } = useStore();
-  const [products, setProducts] = useState<Record<string, TProductCollection>>(
-    {}
-  );
+  const [products, setProducts] = useState<TProductCollection>([]);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [productsByCategory, setProductsByCategory] = useState<
+    Record<string, TProductCollection>
+  >({});
   const [searchResults, setSearchResults] = useState<TProductCollection>([]);
   const [displayResults, setDisplayResults] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>('');
 
-  // Fetch sorted products only when sortAllProductsByCategory changes
-  useEffect(() => {
-    const sortedProducts = sortAllProductsByCategory();
-    setProducts(sortedProducts);
-  }, [sortAllProductsByCategory]);
-
-  // Create a memoized version of filtered products
   const filteredProducts = useMemo(() => {
     if (category) {
-      return { [category]: products[category] || [] };
+      return { [category]: productsByCategory[category] || [] };
     }
-    return products;
-  }, [products, category]);
+    return productsByCategory;
+  }, [category, productsByCategory]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const products = await getProducts();
+      setProducts(products);
+      const productCategories = getCategories(products);
+      setCategories([ALL_CATEGORIES, ...productCategories]);
+      setProductsByCategory(getProductsSortedByCategory(products));
+    };
+
+    fetchData();
+  }, [categories]);
 
   const handleOnSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchValue(value);
-
     if (value.length > 2) {
-      const results = Object.values(products)
-        .flat()
-        .filter((product) =>
-          product.productName.toLowerCase().includes(value.toLowerCase())
-        );
+      const results = searchInProducts(products, value);
       setSearchResults(results);
       setDisplayResults(true);
     } else {
@@ -58,26 +73,25 @@ const Store = () => {
     setSearchValue('');
   };
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  const handleCategoryChange = (value: string) =>
+    value === ALL_CATEGORIES
+      ? router.push('/store')
+      : router.push(`/store?category=${value}`);
 
   return (
     <div className={styles.store}>
       <SearchAndFilter
+        categories={categories}
         onSearchChange={handleOnSearch}
         searchValue={searchValue}
+        selectedCategory={category || ALL_CATEGORIES}
+        setSelectedCategory={handleCategoryChange}
       />
-      <Flex>
-        <Box flex={1}>
-          {displayResults ? (
-            <SearchResults results={searchResults} onClose={endSearch} />
-          ) : (
-            <ProductsList list={filteredProducts} />
-          )}
-        </Box>
-        <Box width={[0, '20%']} />
-      </Flex>
+      {displayResults ? (
+        <SearchResults results={searchResults} onClose={endSearch} />
+      ) : (
+        <ProductsList list={filteredProducts} />
+      )}
     </div>
   );
 };
