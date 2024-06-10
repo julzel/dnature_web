@@ -1,9 +1,10 @@
-import Image from 'next/image';
-import { Flex, Box } from '@chakra-ui/react';
-import { TProduct } from '@/types/products';
-import Title from '@/components/Titles';
-import CurrencyFormat from '@/components/currency';
-import styles from './ProductPreview.module.scss';
+import Image from "next/image";
+import { Flex, Box } from "@chakra-ui/react";
+import { TProduct } from "@/types/products";
+import Title from "@/components/Titles";
+import CurrencyFormat from "@/components/currency";
+import ResponsiveImage from "@/components/responsive-image";
+import styles from "./ProductPreview.module.scss";
 
 type ProductProps = {
   product: TProduct;
@@ -22,46 +23,43 @@ const ProductPreview = ({ product, displayCategory }: ProductProps) => {
   } = product;
   return (
     <Flex
-      justifyContent='space-between'
-      backgroundColor='#fdfdfd'
-      h='100%'
+      justifyContent="space-between"
+      backgroundColor="#fdfdfd"
+      h="100%"
       p={[2, 4]}
       borderBottom={`1px solid`}
-      borderColor={'borderColor'}
+      borderColor={"borderColor"}
     >
-      <Flex w={'45%'} flexShrink={0} justifyContent='center'>
-        <Image
+      <Flex w={"45%"} flexShrink={0} justifyContent="center">
+        <ResponsiveImage
           src={imageCollection.items[0].url}
           alt={imageCollection.items[0].title}
-          width={100}
-          height={100}
-          layout='responsive'
-          objectFit='contain'
+          aspectRatioName="square"
         />
       </Flex>
-      <Box flex={1} flexShrink={0} pt={4} textAlign='right'>
+      <Box flex={1} flexShrink={0} pt={4} textAlign="right">
         <Title
-          color='gray.700'
-          type='subtitle'
-          textTransform='uppercase'
+          color="gray.700"
+          type="subtitle"
+          textTransform="uppercase"
           className={styles.productName}
           mb={1}
         >
           {productName}
         </Title>
         <Title
-          color='gray.700'
-          type='subtitle-2'
+          color="gray.700"
+          type="subtitle-2"
           className={styles.productPrice}
         >
           <CurrencyFormat value={precio} /> {medida && `| ${medida}`}
         </Title>
       </Box>
       {displayCategory && (
-        <Box flex={1} flexShrink={0} pt={4} textAlign='right'>
+        <Box flex={1} flexShrink={0} pt={4} textAlign="right">
           <Title
-            color='gray.700'
-            type='subtitle-2'
+            color="gray.700"
+            type="subtitle-2"
             className={styles.productCategory}
           >
             {category}

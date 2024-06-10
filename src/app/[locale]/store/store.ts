@@ -1,22 +1,39 @@
-import { getAllProducts } from '@/apis/contentful/products';
-import { TProduct, TProductCollection } from '@/types/products';
+import { getAllProducts } from "@/apis/contentful/products";
+import { TProduct, TProductCollection } from "@/types/products";
 
-const getProducts = async (): Promise<TProductCollection> => {
+export const ALL_CATEGORIES = "Todos";
+
+const getCategoriesAndProducts = async (
+  category?: string
+): Promise<[string[], TProductCollection]> => {
   try {
-    return await getAllProducts();
+    const products = await getAllProducts(category);
+    return [getCategories(products), products];
   } catch (error) {
-    console.error('Error fetching products:', error);
+    console.error("Error fetching products:", error);
+    return [[], []];
+  }
+};
+
+const getProducts = async (category?: string): Promise<TProductCollection> => {
+  try {
+    return await getAllProducts(category);
+  } catch (error) {
+    console.error("Error fetching products:", error);
     return [];
   }
 };
 
 const getCategories = (products: TProductCollection): string[] => {
-  return products.reduce((acc, product) => {
-    if (!acc.includes(product.category)) {
-      acc.push(product.category);
-    }
-    return acc;
-  }, [] as string[]);
+  return products.reduce(
+    (acc, product) => {
+      if (!acc.includes(product.category)) {
+        acc.push(product.category);
+      }
+      return acc;
+    },
+    [ALL_CATEGORIES] as string[]
+  );
 };
 
 const filterProductsByCategory = (
@@ -60,6 +77,7 @@ const getProductsSortedByCategory = (
 
 export {
   getProducts,
+  getCategoriesAndProducts,
   getCategories,
   getProductsSortedByCategory,
   filterProductsByCategory,

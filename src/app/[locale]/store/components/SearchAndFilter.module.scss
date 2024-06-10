@@ -5,6 +5,7 @@
   width: 100vw;
   left: 0;
   top: var(--header-height);
+  z-index: 1;
 
   .searchAndFilter {
     max-width: 1200px;

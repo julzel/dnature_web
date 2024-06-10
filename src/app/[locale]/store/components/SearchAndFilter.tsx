@@ -1,46 +1,47 @@
-import { Box, Flex, useDisclosure } from '@chakra-ui/react';
-import Search from '@/components/search';
-import FilterButton from '@/components/filter-button';
-import Drawer from '@/components/drawer';
-import styles from './SearchAndFilter.module.scss';
-import FilterOptions from './FilterOptions';
+"use client";
+import { useSearchParams, useRouter } from "next/navigation";
+import { Box, Flex, useDisclosure } from "@chakra-ui/react";
+import Search from "@/components/search";
+import FilterButton from "@/components/filter-button";
+import Drawer from "@/components/drawer";
+import styles from "./SearchAndFilter.module.scss";
+import FilterOptions from "./FilterOptions";
 
 type SerchAndFilterProps = {
   categories: string[];
-  onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  searchValue: string;
-  selectedCategory: string;
-  setSelectedCategory: (value: string) => void;
 };
 
-const SearchAndFilter = ({
-  onSearchChange,
-  searchValue,
-  categories,
-  selectedCategory,
-  setSelectedCategory,
-}: SerchAndFilterProps) => {
+const SearchAndFilter = ({ categories }: SerchAndFilterProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const category = searchParams.get("category");
+
+  const handleCategoryChange = (value: string) =>
+    value === categories[0] // ALL_CATEGORIES
+      ? router.push("/store")
+      : router.push(`/store?category=${value}`);
+
   return (
-    <Box backgroundColor='cyan.50' className={styles.searchAndFilterContainer}>
+    <Box backgroundColor="cyan.50" className={styles.searchAndFilterContainer}>
       <Flex
-        justifyContent='space-between'
+        justifyContent="space-between"
         className={styles.searchAndFilter}
         p={4}
       >
-        <Search onSearchChange={onSearchChange} searchValue={searchValue} />
+        {/* <Search onSearchChange={onSearchChange} searchValue={searchValue} /> */}
         <FilterButton onClick={onOpen} />
       </Flex>
       <Drawer
         isOpen={isOpen}
         onClose={onClose}
-        direction='right'
-        title='Filtrar'
+        direction="right"
+        title="Filtrar"
       >
         <FilterOptions
           categories={categories}
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
+          selectedCategory={category ? category : categories[0]}
+          setSelectedCategory={handleCategoryChange}
         />
       </Drawer>
     </Box>

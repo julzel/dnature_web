@@ -8,19 +8,20 @@ const contentfulAPIEndpoint = (spaceId: string) =>
 export const fetchFromContentful = async (
   query: string,
   tags: string,
+  variables: Record<string, any> = {},
   additionalHeaders: Record<string, string> = {}
 ): Promise<any> => {
   try {
     const response = await fetch(
-      contentfulAPIEndpoint(CONTENTFUL_SPACE_ID || ''),
+      contentfulAPIEndpoint(CONTENTFUL_SPACE_ID || ""),
       {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Bearer ${CONTENTFUL_ACCESS_TOKEN}`,
           ...additionalHeaders,
         },
-        body: JSON.stringify({ query }),
+        body: JSON.stringify({ query, variables }),
         next: { tags: [tags] },
       }
     );
@@ -31,7 +32,7 @@ export const fetchFromContentful = async (
 
     return await response.json();
   } catch (error) {
-    console.error('Error fetching data from Contentful:', error);
+    console.error("Error fetching data from Contentful:", error);
     throw error;
   }
 };
