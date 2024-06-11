@@ -1,6 +1,6 @@
-import { Input, InputGroup, InputRightElement } from '@chakra-ui/react';
-import { PiMagnifyingGlass } from 'react-icons/pi';
-import styles from './Search.module.scss';
+import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import { PiMagnifyingGlass } from "react-icons/pi";
+import styles from "./Search.module.scss";
 
 type SearchInputProps = {
   onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -17,15 +17,15 @@ const Search = ({
     <div className={styles.search}>
       <InputGroup>
         <Input
-          backgroundColor='white'
-          name='search'
-          type='text'
-          placeholder={placeholder || 'Buscar'}
+          backgroundColor="white"
+          name="search"
+          type="text"
+          placeholder={placeholder || "Buscar"}
           onChange={onSearchChange}
-          value={searchValue}
+          defaultValue={searchValue}
         />
-        <InputRightElement pointerEvents='none'>
-          <PiMagnifyingGlass color='gray' />
+        <InputRightElement pointerEvents="none">
+          <PiMagnifyingGlass color="gray" />
         </InputRightElement>
       </InputGroup>
     </div>

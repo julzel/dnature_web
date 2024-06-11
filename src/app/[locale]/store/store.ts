@@ -1,24 +1,51 @@
-import { getAllProducts } from '@/apis/contentful/products';
-import { TProduct, TProductCollection } from '@/types/products';
+import { getProducts as getAllProducts } from "@/apis/contentful/products";
+import { getAllCategories } from "@/apis/contentful/categories";
+import { TProductCollection } from "@/types/products";
 
-const getProducts = async (): Promise<TProductCollection> => {
+const ALL_CATEGORIES = "Todos";
+
+/**
+ * Retrieves all categories from the API.
+ * @returns A promise that resolves to an array of strings representing the categories.
+ */
+const getCategories = async (): Promise<string[]> => {
   try {
-    return await getAllProducts();
+    const categories = await getAllCategories();
+    return [ALL_CATEGORIES, ...categories];
   } catch (error) {
-    console.error('Error fetching products:', error);
+    console.error("Error fetching categories:", error);
     return [];
   }
 };
 
-const getCategories = (products: TProductCollection): string[] => {
-  return products.reduce((acc, product) => {
-    if (!acc.includes(product.category)) {
-      acc.push(product.category);
-    }
-    return acc;
-  }, [] as string[]);
+/**
+ * Retrieves all products from the API, optionally filtered by category.
+ * @param category - The category to filter the products by.
+ * @returns A promise that resolves to an array of products.
+ */
+const getProducts = async (
+  category?: string,
+  query?: string
+): Promise<TProductCollection> => {
+  try {
+    const products = await getAllProducts(category, query);
+    return products.sort((a, b) => {
+      const aRating = a.rating || 100;
+      const bRating = b.rating || 100;
+      return aRating - bRating; // Sort in descending order. Swap 'aRating' and 'bRating' for ascending order.
+    });
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
 };
 
+/**
+ * Filters the given products by category.
+ * @param products - The array of products to filter.
+ * @param category - The category to filter the products by.
+ * @returns An array of products filtered by the specified category.
+ */
 const filterProductsByCategory = (
   products: TProductCollection,
   category: string
@@ -26,6 +53,12 @@ const filterProductsByCategory = (
   return products.filter((product) => product.category === category);
 };
 
+/**
+ * Filters the given products by name.
+ * @param products - The array of products to filter.
+ * @param name - The name to filter the products by.
+ * @returns An array of products filtered by the specified name.
+ */
 const filterProductsByName = (
   products: TProductCollection,
   name: string
@@ -35,33 +68,9 @@ const filterProductsByName = (
   );
 };
 
-const getProductsSortedByCategory = (
-  products: TProductCollection
-): Record<string, TProductCollection> => {
-  const sortedProductsByRating = products.sort((a, b) => {
-    const aRating = a.rating || 100;
-    const bRating = b.rating || 100;
-    return aRating - bRating; // Sort in descending order. Swap 'aRating' and 'bRating' for ascending order.
-  });
-  const categories: string[] = [];
-  return sortedProductsByRating.reduce(
-    (acc: Record<string, TProductCollection>, product: TProduct) => {
-      const category = product.category;
-      if (!acc[category]) {
-        categories.push(category);
-        acc[category] = [];
-      }
-      acc[category].push(product);
-      return acc;
-    },
-    {}
-  );
-};
-
 export {
   getProducts,
   getCategories,
-  getProductsSortedByCategory,
   filterProductsByCategory,
   filterProductsByName,
 };

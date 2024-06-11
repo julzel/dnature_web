@@ -1,25 +1,31 @@
-import { Box, Text } from '@chakra-ui/react';
-import { TProductCollection } from '@/types/products';
-import ProductsGrid from '@/components/products-grid';
+import { Box, Text } from "@chakra-ui/react";
+import { TProductCollection } from "@/types/products";
+import ProductsGrid from "@/components/products-grid";
+import { getProducts } from "../store";
 
 type ProductsListProps = {
-  list: Record<string, TProductCollection>;
+  query?: string;
+  category?: string;
 };
 
-const ProductsList = ({ list }: ProductsListProps) => {
+const ProductsList = async ({ query, category }: ProductsListProps) => {
+  const products: TProductCollection = await getProducts(
+    query ? "" : category,
+    query
+  );
+
   return (
     <Box>
-      {Object.keys(list).length === 0 ? (
-        <Text>No hay productos disponibles por el momento.</Text>
+      {products.length === 0 ? (
+        <Text>
+          {query
+            ? "No se encontraron resultados."
+            : "No hay productos disponibles por el momento."}
+        </Text>
       ) : (
-        Object.entries(list).map(([category, items]) => (
-          <Box key={category}>
-            <Text fontSize='lg' fontWeight='bold'>
-              {category}
-            </Text>
-            <ProductsGrid items={items} />
-          </Box>
-        ))
+        <>
+          <ProductsGrid items={products} />
+        </>
       )}
     </Box>
   );

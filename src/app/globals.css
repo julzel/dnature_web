@@ -6,8 +6,9 @@
   --brand-orange: #ff6f00;
   --brand-white: #fefefe;
   --border-color: #e9e9e9;
+  
   /*sizes*/
-  --header-height: 80px;
+  --header-height: 80px; /* Update HEADER_HEIGHT value if this changes*/
   --border-radius: 8px;
   --border-radius-sm: 4px;
   --border-radius-full: 50%;
