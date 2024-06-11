@@ -32,10 +32,13 @@ const SearchAndFilter = ({ category, categories }: SerchAndFilterProps) => {
     }
   );
 
-  const handleCategoryFilter = (value: string) =>
+  const handleCategoryFilter = (value: string) => {
+    const params = new URLSearchParams(searchParams);
+    params.delete("query");
     value === "Todos" // ALL_CATEGORIES
       ? push("/store")
       : push(`/store?category=${value}`);
+  };
 
   return (
     <Box backgroundColor="cyan.50" className={styles.searchAndFilterContainer}>

@@ -9,14 +9,23 @@ type ProductsListProps = {
 };
 
 const ProductsList = async ({ query, category }: ProductsListProps) => {
-  const products: TProductCollection = await getProducts(category);
+  const products: TProductCollection = await getProducts(
+    query ? "" : category,
+    query
+  );
 
   return (
     <Box>
       {products.length === 0 ? (
-        <Text>No hay productos disponibles por el momento.</Text>
+        <Text>
+          {query
+            ? "No se encontraron resultados."
+            : "No hay productos disponibles por el momento."}
+        </Text>
       ) : (
-        <ProductsGrid items={products} />
+        <>
+          <ProductsGrid items={products} />
+        </>
       )}
     </Box>
   );

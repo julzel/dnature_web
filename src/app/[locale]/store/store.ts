@@ -1,4 +1,4 @@
-import { getAllProducts } from "@/apis/contentful/products";
+import { getProducts as getAllProducts } from "@/apis/contentful/products";
 import { getAllCategories } from "@/apis/contentful/categories";
 import { TProductCollection } from "@/types/products";
 
@@ -23,9 +23,12 @@ const getCategories = async (): Promise<string[]> => {
  * @param category - The category to filter the products by.
  * @returns A promise that resolves to an array of products.
  */
-const getProducts = async (category?: string): Promise<TProductCollection> => {
+const getProducts = async (
+  category?: string,
+  query?: string
+): Promise<TProductCollection> => {
   try {
-    const products = await getAllProducts(category);
+    const products = await getAllProducts(category, query);
     return products.sort((a, b) => {
       const aRating = a.rating || 100;
       const bRating = b.rating || 100;
