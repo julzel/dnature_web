@@ -1,6 +1,7 @@
 "use client";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { Box, Flex, useDisclosure } from "@chakra-ui/react";
+import { useDebouncedCallback } from "use-debounce";
 import Search from "@/components/search";
 import FilterButton from "@/components/filter-button";
 import Drawer from "@/components/drawer";
@@ -8,19 +9,33 @@ import styles from "./SearchAndFilter.module.scss";
 import FilterOptions from "./FilterOptions";
 
 type SerchAndFilterProps = {
+  category?: string;
   categories: string[];
 };
 
-const SearchAndFilter = ({ categories }: SerchAndFilterProps) => {
+const SearchAndFilter = ({ category, categories }: SerchAndFilterProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const category = searchParams.get("category");
+  const pathname = usePathname();
+  const { replace, push } = useRouter();
 
-  const handleCategoryChange = (value: string) =>
-    value === categories[0] // ALL_CATEGORIES
-      ? router.push("/store")
-      : router.push(`/store?category=${value}`);
+  const handleSearch = useDebouncedCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const term = e.target.value;
+      const params = new URLSearchParams(searchParams);
+      if (term) {
+        params.set("query", term);
+      } else {
+        params.delete("query");
+      }
+      replace(`${pathname}?${params.toString()}`);
+    }
+  );
+
+  const handleCategoryFilter = (value: string) =>
+    value === "Todos" // ALL_CATEGORIES
+      ? push("/store")
+      : push(`/store?category=${value}`);
 
   return (
     <Box backgroundColor="cyan.50" className={styles.searchAndFilterContainer}>
@@ -29,7 +44,10 @@ const SearchAndFilter = ({ categories }: SerchAndFilterProps) => {
         className={styles.searchAndFilter}
         p={4}
       >
-        {/* <Search onSearchChange={onSearchChange} searchValue={searchValue} /> */}
+        <Search
+          searchValue={searchParams.get("query")?.toString() || ""}
+          onSearchChange={handleSearch}
+        />
         <FilterButton onClick={onOpen} />
       </Flex>
       <Drawer
@@ -40,8 +58,8 @@ const SearchAndFilter = ({ categories }: SerchAndFilterProps) => {
       >
         <FilterOptions
           categories={categories}
-          selectedCategory={category ? category : categories[0]}
-          setSelectedCategory={handleCategoryChange}
+          selectedCategory={category ? category : "Todos"}
+          setSelectedCategory={handleCategoryFilter}
         />
       </Drawer>
     </Box>

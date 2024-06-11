@@ -4,12 +4,13 @@ import ProductsGrid from "@/components/products-grid";
 import { getProducts } from "../store";
 
 type ProductsListProps = {
+  query?: string;
   category?: string;
-  searchValue?: string;
 };
 
-const ProductsList = async ({ category }: ProductsListProps) => {
+const ProductsList = async ({ query, category }: ProductsListProps) => {
   const products: TProductCollection = await getProducts(category);
+
   return (
     <Box>
       {products.length === 0 ? (
