@@ -1,5 +1,5 @@
-import { Button } from '@chakra-ui/react';
-import { PiSortAscendingThin } from 'react-icons/pi';
+import { Button } from "@chakra-ui/react";
+import { PiSortAscendingThin } from "react-icons/pi";
 
 type Props = {
   onClick: () => void;
@@ -12,10 +12,10 @@ const FilterButton = ({ onClick }: Props) => {
       m={0}
       onClick={onClick}
       leftIcon={<PiSortAscendingThin />}
-      fontSize='40px'
-      color='gray.500'
-      variant='ghost'
-      aria-label='Filtrar y ordenar productos'
+      fontSize="40px"
+      color="gray.100"
+      variant="ghost"
+      aria-label="Filtrar y ordenar productos"
       iconSpacing={0}
     />
   );

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Flex, Box } from "@chakra-ui/react";
 import { TProduct } from "@/types/products";
 import Title from "@/components/Titles";
@@ -22,22 +21,15 @@ const ProductPreview = ({ product, displayCategory }: ProductProps) => {
     sys,
   } = product;
   return (
-    <Flex
-      justifyContent="space-between"
-      backgroundColor="#fdfdfd"
-      h="100%"
-      p={[2, 4]}
-      borderBottom={`1px solid`}
-      borderColor={"borderColor"}
-    >
-      <Flex w={"45%"} flexShrink={0} justifyContent="center">
+    <Box backgroundColor="gray.100" h="100%">
+      <Flex width="100%" justifyContent="center" p={8} backgroundColor="white">
         <ResponsiveImage
           src={imageCollection.items[0].url}
           alt={imageCollection.items[0].title}
           aspectRatioName="square"
         />
       </Flex>
-      <Box flex={1} flexShrink={0} pt={4} textAlign="right">
+      <Box flex={1} flexShrink={0} p={4} textAlign="right">
         <Title
           color="gray.700"
           type="subtitle"
@@ -66,7 +58,7 @@ const ProductPreview = ({ product, displayCategory }: ProductProps) => {
           </Title>
         </Box>
       )}
-    </Flex>
+    </Box>
   );
 };
 

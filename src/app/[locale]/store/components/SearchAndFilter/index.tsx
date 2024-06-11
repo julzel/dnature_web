@@ -6,7 +6,7 @@ import Search from "@/components/search";
 import FilterButton from "@/components/filter-button";
 import Drawer from "@/components/drawer";
 import styles from "./SearchAndFilter.module.scss";
-import FilterOptions from "./FilterOptions";
+import FilterOptions from "../FilterOptions";
 
 type SerchAndFilterProps = {
   category?: string;
@@ -41,7 +41,7 @@ const SearchAndFilter = ({ category, categories }: SerchAndFilterProps) => {
   };
 
   return (
-    <Box backgroundColor="cyan.50" className={styles.searchAndFilterContainer}>
+    <Box backgroundColor="cyan.700" className={styles.searchAndFilterContainer}>
       <Flex
         justifyContent="space-between"
         className={styles.searchAndFilter}

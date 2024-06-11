@@ -1,5 +1,8 @@
 import { Suspense } from "react";
-import ProductsList from "./components/ProductsList";
+import { Box } from "@chakra-ui/react";
+import ProductsList from "./components/ProductList";
+import { ProductsGridSkeleton } from "@/components/products-grid";
+import Title from "@/components/Titles";
 import SearchAndFilter from "./components/SearchAndFilter";
 import { getCategories } from "./store";
 import styles from "./page.module.scss";
@@ -17,15 +20,19 @@ const Store = async ({ searchParams }: Props) => {
   const categories = await getCategories();
 
   return (
-    <div className={styles.store}>
+    <Box className={styles.store} bgColor="gray.50" px={[4, 8]} pb={[4, 8]}>
       <SearchAndFilter category={category} categories={categories} />
-      <Suspense
-        key={query + category}
-        fallback={<div>Loading Fallback...</div>}
-      >
+      <Suspense key={query + category} fallback={<ProductsGridSkeleton />}>
+        <Box>
+          {query ? (
+            <Title type="subtitle-2">Resultados para &quot;{query}&quot;</Title>
+          ) : (
+            <Title type="subtitle-2">{category || "Todos los productos"}</Title>
+          )}
+        </Box>
         <ProductsList query={query} category={category} />
       </Suspense>
-    </div>
+    </Box>
   );
 };
 
