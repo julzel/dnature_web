@@ -6,9 +6,9 @@
 // }
 
 import ScrollTopButton from "@/components/scroll-to-top-button";
-import Hero from "./components/HomeSlider";
-import Shop from "./components/Shop";
-import Greeting from "./components/Greeting";
+import HomeSlider from "./components/home-slider";
+import Shop from "./components/shop";
+import Greeting from "./components/greeting";
 
 type Props = {};
 
@@ -16,7 +16,7 @@ const Home = (props: Props) => {
   return (
     <>
       <div>
-        <Hero />
+        <HomeSlider />
         <Shop />
         <Greeting />
       </div>

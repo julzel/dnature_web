@@ -1,9 +1,9 @@
-import SimpleSlider from '@/components/simple-slider';
-import { slides } from './slides';
+import SimpleSlider from "@/components/simple-slider";
+import { slides } from "./slides";
 
 type Props = {};
 
-const Hero = (props: Props) => {
+const HomeSlider = (props: Props) => {
   return (
     <SimpleSlider
       showNavigation={false}
@@ -15,4 +15,4 @@ const Hero = (props: Props) => {
   );
 };
 
-export default Hero;
+export default HomeSlider;
