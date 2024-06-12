@@ -21,7 +21,7 @@ const ProductPreview = ({ product, displayCategory }: ProductProps) => {
     sys,
   } = product;
   return (
-    <Box backgroundColor="gray.100" h="100%">
+    <Box backgroundColor="gray.100" h="100%" maxWidth="400px">
       <Flex width="100%" justifyContent="center" p={8} backgroundColor="white">
         <ResponsiveImage
           src={imageCollection.items[0].url}
